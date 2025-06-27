@@ -1,4 +1,4 @@
-import { providers } from '@/lib/data';
+import { vendors } from '@/lib/data';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -7,10 +7,9 @@ import { Star, MapPin, Building2, GalleryHorizontalEnd, MessageSquareText } from
 import { Separator } from '@/components/ui/separator';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { ContactDialog } from '@/components/contact-dialog';
-import { ReviewSummary } from '@/components/review-summary';
 import type { Review } from '@/lib/types';
 
-interface ProviderPageProps {
+interface VendorPageProps {
   params: {
     id: string;
   };
@@ -44,10 +43,10 @@ function ReviewCard({ review }: { review: Review }) {
   );
 }
 
-export default function ProviderPage({ params }: ProviderPageProps) {
-  const provider = providers.find((p) => p.id === params.id);
+export default function VendorPage({ params }: VendorPageProps) {
+  const vendor = vendors.find((p) => p.id === params.id);
 
-  if (!provider) {
+  if (!vendor) {
     notFound();
   }
 
@@ -57,22 +56,22 @@ export default function ProviderPage({ params }: ProviderPageProps) {
         {/* Header Section */}
         <div className="md:flex items-center justify-between mb-8">
             <div>
-                <Badge variant="default" className="mb-2 text-sm">{provider.service}</Badge>
-                <h1 className="text-3xl md:text-5xl font-bold font-headline">{provider.name}</h1>
+                <Badge variant="default" className="mb-2 text-sm">{vendor.category}</Badge>
+                <h1 className="text-3xl md:text-5xl font-bold font-headline">{vendor.name}</h1>
                 <div className="flex items-center gap-4 mt-2 text-muted-foreground">
                     <div className="flex items-center gap-2">
                         <MapPin className="w-5 h-5" />
-                        <span>{provider.location}</span>
+                        <span>{vendor.location}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                        {renderStars(provider.rating)}
-                        <span className="font-semibold text-foreground ml-1">{provider.rating.toFixed(1)}</span>
-                        <span>({provider.reviewsCount} reviews)</span>
+                        {renderStars(vendor.rating)}
+                        <span className="font-semibold text-foreground ml-1">{vendor.rating.toFixed(1)}</span>
+                        <span>({vendor.reviewsCount} reviews)</span>
                     </div>
                 </div>
             </div>
             <div className="mt-4 md:mt-0">
-                <ContactDialog providerName={provider.name} />
+                <ContactDialog vendorName={vendor.name} />
             </div>
         </div>
 
@@ -85,16 +84,16 @@ export default function ProviderPage({ params }: ProviderPageProps) {
                     <CardHeader>
                         <CardTitle className="flex items-center gap-2">
                             <Building2 className="text-primary"/>
-                            <span>About {provider.name}</span>
+                            <span>About {vendor.name}</span>
                         </CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <p className="text-foreground/80 leading-relaxed">{provider.longDescription}</p>
+                        <p className="text-foreground/80 leading-relaxed">{vendor.longDescription}</p>
                     </CardContent>
                 </Card>
 
                 {/* Gallery Section */}
-                {provider.images.length > 0 && (
+                {vendor.images.length > 0 && (
                      <Card className="mb-8">
                         <CardHeader>
                             <CardTitle className="flex items-center gap-2">
@@ -105,15 +104,15 @@ export default function ProviderPage({ params }: ProviderPageProps) {
                         <CardContent>
                             <Carousel className="w-full">
                                 <CarouselContent>
-                                    {provider.images.map((img, index) => (
+                                    {vendor.images.map((img, index) => (
                                     <CarouselItem key={index}>
                                         <div className="relative aspect-video w-full">
                                         <Image
                                             src={img}
-                                            alt={`${provider.name} gallery image ${index + 1}`}
+                                            alt={`${vendor.name} gallery image ${index + 1}`}
                                             fill
                                             className="rounded-lg object-cover"
-                                            data-ai-hint={`${provider.service.toLowerCase().replace(' ', '-')} office`}
+                                            data-ai-hint={`${vendor.category.toLowerCase().replace(' ', '-')} office`}
                                         />
                                         </div>
                                     </CarouselItem>
@@ -135,17 +134,14 @@ export default function ProviderPage({ params }: ProviderPageProps) {
                         </CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-4">
-                        {provider.reviews.map((review) => (
+                        {vendor.reviews.map((review) => (
                            <ReviewCard key={review.id} review={review} />
                         ))}
                     </CardContent>
                 </Card>
             </div>
             <div className="md:col-span-1">
-                 {/* AI Summary Section */}
-                <div className="sticky top-24">
-                     <ReviewSummary reviews={provider.reviews} />
-                </div>
+                 {/* Placeholder for other info */}
             </div>
         </div>
       </div>

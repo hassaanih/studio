@@ -30,10 +30,10 @@ const contactFormSchema = z.object({
 type ContactFormValues = z.infer<typeof contactFormSchema>;
 
 interface ContactDialogProps {
-  providerName: string;
+  vendorName: string;
 }
 
-export function ContactDialog({ providerName }: ContactDialogProps) {
+export function ContactDialog({ vendorName }: ContactDialogProps) {
   const { toast } = useToast();
   const [open, setOpen] = React.useState(false);
 
@@ -50,7 +50,7 @@ export function ContactDialog({ providerName }: ContactDialogProps) {
     console.log(data); // In a real app, you'd send this data to a server
     toast({
       title: "Message Sent!",
-      description: `Your message to ${providerName} has been sent successfully.`,
+      description: `Your message to ${vendorName} has been sent successfully.`,
     });
     form.reset();
     setOpen(false);
@@ -60,14 +60,14 @@ export function ContactDialog({ providerName }: ContactDialogProps) {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button>
-          <Mail className="mr-2 h-4 w-4" /> Contact Provider
+          <Mail className="mr-2 h-4 w-4" /> Contact Vendor
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Contact {providerName}</DialogTitle>
+          <DialogTitle>Contact {vendorName}</DialogTitle>
           <DialogDescription>
-            Fill out the form below to send a message directly to the provider.
+            Fill out the form below to send a message directly to the vendor.
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>

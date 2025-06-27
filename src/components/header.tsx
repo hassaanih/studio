@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Briefcase } from "lucide-react";
+import { Briefcase, ArrowRight } from "lucide-react";
+import { Button } from "./ui/button";
 
 export function Header() {
   return (
@@ -11,7 +12,11 @@ export function Header() {
             <span>ProcurLink</span>
           </Link>
           <nav>
-            {/* Future nav links can go here */}
+            <Button asChild>
+              <Link href="/dashboard">
+                Go to Dashboard <ArrowRight />
+              </Link>
+            </Button>
           </nav>
         </div>
       </div>

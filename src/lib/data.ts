@@ -1,10 +1,10 @@
-import type { Provider } from './types';
+import type { Vendor } from './types';
 
-export const providers: Provider[] = [
+export const vendors: Vendor[] = [
   {
     id: 'techwave-solutions',
     name: 'TechWave Solutions',
-    service: 'Web Development',
+    category: 'Web Development',
     location: 'San Francisco, CA',
     rating: 4.8,
     reviewsCount: 124,
@@ -42,11 +42,14 @@ export const providers: Provider[] = [
           'TechWave exceeded all our expectations. Their technical expertise is top-notch, and they provided valuable insights that improved our initial concept. Highly recommend their services.',
       },
     ],
+    status: 'Active',
+    contact: { name: 'Alex Ray', email: 'alex@techwave.com', phone: '555-0101' },
+    registrationDate: '2022-01-15',
   },
   {
     id: 'pixel-perfect-designs',
     name: 'Pixel Perfect Designs',
-    service: 'Graphic Design',
+    category: 'Graphic Design',
     location: 'New York, NY',
     rating: 4.9,
     reviewsCount: 210,
@@ -75,11 +78,14 @@ export const providers: Provider[] = [
           'The best design agency I have ever worked with. They are professional, timely, and incredibly talented. Our new branding has received so many compliments.',
       },
     ],
+    status: 'Active',
+    contact: { name: 'Maria Garcia', email: 'maria@pixelperfect.com', phone: '555-0102' },
+    registrationDate: '2021-11-20',
   },
   {
     id: 'market-gurus-inc',
     name: 'Market Gurus Inc.',
-    service: 'Marketing',
+    category: 'Marketing',
     location: 'Chicago, IL',
     rating: 4.7,
     reviewsCount: 98,
@@ -105,11 +111,14 @@ export const providers: Provider[] = [
         comment: 'Solid results and a knowledgeable team. The reporting could be a bit more detailed, but overall, we are very satisfied with their performance and our growth.',
       },
     ],
+    status: 'Pending Validation',
+    contact: { name: 'James Kim', email: 'james@marketgurus.com', phone: '555-0103' },
+    registrationDate: '2023-03-10',
   },
     {
     id: 'innovate-it',
     name: 'InnovateIT',
-    service: 'IT Consulting',
+    category: 'IT Consulting',
     location: 'Austin, TX',
     rating: 4.9,
     reviewsCount: 152,
@@ -136,11 +145,14 @@ export const providers: Provider[] = [
         comment: 'The cybersecurity audit they performed was thorough and insightful. We now feel much more secure thanks to their recommendations. Highly professional team.',
       },
     ],
+    status: 'Active',
+    contact: { name: 'Linda Nguyen', email: 'linda@innovateit.com', phone: '555-0104' },
+    registrationDate: '2022-07-22',
   },
   {
     id: 'creative-quill',
     name: 'Creative Quill',
-    service: 'Content Creation',
+    category: 'Content Creation',
     location: 'Remote',
     rating: 4.8,
     reviewsCount: 85,
@@ -165,5 +177,8 @@ export const providers: Provider[] = [
         comment: 'Great writing team. They are flexible and can handle a variety of topics. Sometimes revisions take a little while, but the quality of the final content is always excellent.',
       },
     ],
+    status: 'Deactivated',
+    contact: { name: 'Ben Carter', email: 'ben@creativequill.com', phone: '555-0105' },
+    registrationDate: '2020-05-01',
   },
 ];

@@ -1,12 +1,11 @@
 import type {Metadata} from 'next';
 import './globals.css';
 import { cn } from "@/lib/utils";
-import { Header } from '@/components/header';
 import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
   title: 'ProcurLink',
-  description: 'A professional Procurement Partner Portal to connect businesses with service providers.',
+  description: 'A comprehensive procurement and vendor management platform.',
 };
 
 export default function RootLayout({
@@ -21,11 +20,8 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </head>
-      <body className={cn('font-body antialiased min-h-screen flex flex-col', 'font-sans')}>
-        <Header />
-        <main className="flex-1">
-          {children}
-        </main>
+      <body className={cn('font-body antialiased', 'font-sans')}>
+        {children}
         <Toaster />
       </body>
     </html>

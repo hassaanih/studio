@@ -6,10 +6,12 @@ export type Review = {
   date: string;
 };
 
-export type Provider = {
-  id:string;
+export type VendorStatus = 'Active' | 'Pending Validation' | 'Deactivated';
+
+export type Vendor = {
+  id: string;
   name: string;
-  service: ServiceType;
+  category: VendorCategory;
   location: string;
   rating: number;
   reviewsCount: number;
@@ -17,14 +19,24 @@ export type Provider = {
   longDescription: string;
   images: string[];
   reviews: Review[];
+  status: VendorStatus;
+  contact: {
+    name: string;
+    email: string;
+    phone: string;
+  };
+  registrationDate: string;
 };
 
-export const serviceTypes = [
+export const vendorCategories = [
   'Web Development',
   'Graphic Design',
   'Marketing',
   'IT Consulting',
   'Content Creation',
+  'Office Supplies',
+  'Logistics',
+  'Manufacturing',
 ] as const;
 
-export type ServiceType = (typeof serviceTypes)[number];
+export type VendorCategory = (typeof vendorCategories)[number];
